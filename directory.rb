@@ -8,17 +8,17 @@ def input_students
   while continue do
     # get the first name
     puts "Please enter the name of this student"
-    name = gets.chomp
+    name = gets.delete_suffix("\n")
     while name.empty? do
       puts "Please enter a valid name"
-      name = gets.chomp
+      name = gets.delete_suffix("\n")
     end
     # get the cohort
     puts "Please enter the cohort for this student"
-    cohort = gets.chomp
+    cohort = gets.delete_suffix("\n")
     while cohort.empty? do
       puts "Please enter a valid cohort"
-      cohort = gets.chomp
+      cohort = gets.delete_suffix("\n")
     end
 
     student = {
@@ -29,10 +29,10 @@ def input_students
     students << student
 
     puts "Continue? y/n"
-    continue = gets.chomp
+    continue = gets.delete_suffix("\n")
     while continue != "y" && continue != "n"
       puts "Please enter y or n"
-      continue = gets.chomp
+      continue = gets.delete_suffix("\n")
     end
     continue = continue == "y"
   end
