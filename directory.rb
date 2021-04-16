@@ -48,14 +48,16 @@ end
 
 def print(students)
   filter_char = "H"
-  cohorts = students.reduce([]) do |acc, student|
-    acc.push(student[:cohort]) 
-  end
+  if !students.empty? 
+    cohorts = students.reduce([]) do |acc, student|
+      acc.push(student[:cohort]) 
+    end
 
-  cohorts.each do |cohort|
-    puts "Cohort: #{cohort}".center($COLUMN_WIDTH)
-    students.each do |student|
-      puts student[:name].center($COLUMN_WIDTH) if student[:cohort] == cohort
+    cohorts.each do |cohort|
+      puts "Cohort: #{cohort}".center($COLUMN_WIDTH)
+      students.each do |student|
+        puts student[:name].center($COLUMN_WIDTH) if student[:cohort] == cohort
+      end
     end
   end
 end
