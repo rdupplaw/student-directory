@@ -1,25 +1,42 @@
 $COLUMN_WIDTH = 50
 
 def input_students
-  puts "Please enter the names of the students"
-  puts "To finish, just hit return twice"
   # create an empty array
   students = []
-  # get the first name
-  name = gets.chomp
-  # while the name is not empty, repeat this code
-  while !name.empty? do
-    # add the student hash to the array
-    students << {name: name, 
-                 cohort: :november, 
-                 hobbies: [], 
-                 country_of_birth: "UK", 
-                 height: 175
-    }
-    puts "Now we have #{students.count} students"
-    # get another name from the user
+
+  continue = true
+  while continue do
+    # get the first name
+    puts "Please enter the name of this student"
     name = gets.chomp
+    while name.empty? do
+      puts "Please enter a valid name"
+      name = gets.chomp
+    end
+    # get the cohort
+    puts "Please enter the cohort for this student"
+    cohort = gets.chomp
+    while cohort.empty? do
+      puts "Please enter a valid cohort"
+      cohort = gets.chomp
+    end
+
+    student = {
+      name: name,
+      cohort: cohort.to_sym
+    }
+
+    students << student
+
+    puts "Continue? y/n"
+    continue = gets.chomp
+    while continue != "y" && continue != "n"
+      puts "Please enter y or n"
+      continue = gets.chomp
+    end
+    continue = continue == "y"
   end
+
   # return the array of students
   students
 end
