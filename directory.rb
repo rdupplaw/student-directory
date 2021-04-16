@@ -24,8 +24,10 @@ end
 
 def print(students)
   filter_char = "H"
-  students.each_with_index do |student, index|
-    puts "#{index}. #{student[:name]} (#{student[:cohort]} cohort)" if student[:name].chr == filter_char && student[:name].length < 12
+  i = 0
+  while i < students.length do
+    puts "#{i}. #{students[i][:name]} (#{students[i][:cohort]} cohort)" if students[i][:name].chr == filter_char && students[i][:name].length < 12
+    i += 1
   end
 end
 
