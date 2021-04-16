@@ -61,7 +61,7 @@ def print(students)
 end
 
 def print_footer(students)
-  puts "Overall, we have #{students.count} great students".center($COLUMN_WIDTH)
+  puts "Overall, we have #{students.count} great student#{"s" if students.count > 1}".center($COLUMN_WIDTH)
 end
 
 students = input_students
