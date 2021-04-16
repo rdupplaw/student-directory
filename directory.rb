@@ -23,8 +23,9 @@ def print_header
 end
 
 def print(students)
+  filter_char = "H"
   students.each_with_index do |student, index|
-    puts "#{index}. #{student[:name]} (#{student[:cohort]} cohort)"
+    puts "#{index}. #{student[:name]} (#{student[:cohort]} cohort)" if student[:name].chr == filter_char
   end
 end
 
