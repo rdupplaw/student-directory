@@ -97,12 +97,12 @@ def try_load_students
   if filename.nil?
     filename = "students.csv"
     load_students(filename)
-    puts "Loaded #{@students.count} from #filename"
+    puts "Loaded #{@students.count} from #{filename}"
   elsif File.exists?(filename)
     load_students(filename)
-    puts "Loaded #{@students.count} from #filename"
+    puts "Loaded #{@students.count} from #{filename}"
   else
-    puts "Sorry, #filename doesn't exist."
+    puts "Sorry, #{filename} doesn't exist."
     exit
   end
 end
