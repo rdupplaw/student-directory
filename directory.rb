@@ -1,4 +1,5 @@
 @students = []
+
 def interactive_menu
   loop do
     print_menu
@@ -12,12 +13,6 @@ def print_menu
   puts "3. Save the list to students.csv"
   puts "4. Load the list from students.csv"
   puts "9. Exit"
-end
-
-def show_students
-  print_header
-  print_students_list
-  print_footer
 end
 
 def process(selection)
@@ -35,6 +30,12 @@ def process(selection)
   else
     puts "I don't know what you meant, try again"
   end
+end
+
+def show_students
+  print_header
+  print_students_list
+  print_footer
 end
 
 def input_students
