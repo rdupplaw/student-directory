@@ -51,6 +51,7 @@ def input_students
     # get another name from the user
     name = STDIN.gets.chomp
   end
+  puts "Successfully added students."
 end
 
 def save_students
@@ -63,6 +64,7 @@ def save_students
     file.puts csv_line
   end
   file.close
+  puts "Successfully saved students to students.csv"
 end
 
 def load_students(filename = "students.csv")
@@ -72,6 +74,7 @@ def load_students(filename = "students.csv")
     add_student(name, cohort.to_sym)
   end
   file.close
+  puts "Loaded #{@students.count} from #{filename}"
 end
 
 def add_student(name, cohort)
@@ -99,10 +102,8 @@ def try_load_students
     filename = "students.csv"
     return if !File.exists?(filename)
     load_students(filename)
-    puts "Loaded #{@students.count} from #{filename}"
   elsif File.exists?(filename)
     load_students(filename)
-    puts "Loaded #{@students.count} from #{filename}"
   else
     puts "Sorry, #{filename} doesn't exist."
     exit
