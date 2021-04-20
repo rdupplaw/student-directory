@@ -3,7 +3,7 @@
 def interactive_menu
   loop do
     print_menu
-    process(STDIN.gets.chomp)
+    process_choice(STDIN.gets.chomp)
   end
 end
 
@@ -15,8 +15,8 @@ def print_menu
   puts "9. Exit"
 end
 
-def process(selection)
-  case selection
+def process_choice(choice)
+  case choice
   when "1"
     input_students
   when "2"
