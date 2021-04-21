@@ -22,9 +22,9 @@ def process_choice(choice)
   when "2"
     show_students
   when "3"
-    save_students
+    save_students(input_filename)
   when "4"
-    load_students
+    load_students(input_filename)
   when "9"
     exit 
   else
@@ -54,9 +54,7 @@ def input_students
   puts "Successfully added students."
 end
 
-def save_students
-  puts "Enter filename to save data to."
-  filename = gets.chomp
+def save_students(filename)
   # open the file for writing
   file = File.open(filename, "w")
   # iterate over the array of students
@@ -69,14 +67,23 @@ def save_students
   puts "Successfully saved students to students.csv"
 end
 
+def input_filename
+  puts "Enter filename"
+  gets.chomp
+end
+
 def load_students(filename = "students.csv")
-  file = File.open(filename, "r")
-  file.readlines.each do |line|
-    name, cohort = line.chomp.split(",")
-    add_student(name, cohort.to_sym)
+  if File.exists?(filename)
+    file = File.open(filename, "r")
+    file.readlines.each do |line|
+      name, cohort = line.chomp.split(",")
+      add_student(name, cohort.to_sym)
+    end
+    file.close
+    puts "Loaded #{@students.count} from #{filename}"
+  else
+    puts "File does not exist"
   end
-  file.close
-  puts "Loaded #{@students.count} from #{filename}"
 end
 
 def add_student(name, cohort)
