@@ -64,7 +64,7 @@ def save_students(filename)
       file.puts csv_line
     end
   end
-  puts "Successfully saved students to students.csv"
+  puts "Successfully saved students to #{filename}"
 end
 
 def input_filename
